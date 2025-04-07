@@ -17,14 +17,25 @@
     <title>Tatiana FUHRER - Développeuse Web</title>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hero.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/skills.css') }}">
 </head>
 <body>
     {% include 'partials/header.html.twig' %}
 
     <main>
-        {% block content %}{% endblock %}
+        {% block content %}
+
+        {% include 'partials/skills.html.twig' %}
+
+        {% endblock %}
     </main>
 
     {% include 'partials/footer.html.twig' %}
+
+    <script src="{{ asset('js/hero.js') }}" defer></script>
+    <script src="{{ asset('js/about.js') }}" defer></script>
+    <script src="{{ asset('js/skills.js') }}" defer></script>
 </body>
 </html>
