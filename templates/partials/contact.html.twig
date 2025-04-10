@@ -1,9 +1,101 @@
-<section id="contact">
-    <h2>Contactez-moi</h2>
-    <form>
-        <input type="text" placeholder="Votre nom">
-        <input type="email" placeholder="Votre email">
-        <textarea placeholder="Votre message"></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
+<section id="contact" class="contact-section">
+  <div class="contact-wrapper">
+    <div class="contact-header">
+      <h2 class="contact-title">Me Contacter</h2>
+      <p class="contact-subtitle">Une question ? Un projet ? Écrivez-moi !</p>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="info-content">
+            <h4>Localisation</h4>
+            <p>Cernay, France</p>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="info-content">
+            <h4>Email</h4>
+            <p>tatiana68270wi@gmail.com</p>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="info-content">
+            <h4>Téléphone</h4>
+            <p>07 79 56 02 21</p>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/tatiana-fuhrer" class="social-link"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/Tatitatouu" class="social-link"><i class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/tatitatoouu/" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="form-container">
+        {% if app.session is defined and app.session.flashbag.has('success') %}
+          <div class="success-message">
+            {% for message in app.session.flashbag.get('success') %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        <form id="contact-form" class="contact-form" data-url="{{ path('contact_submit') }}" method="POST" novalidate>
+          <div class="form-group">
+            <label for="name">Nom et prénom</label>
+            <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Adresse mail</label>
+            <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Sujet</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Choisir un sujet</option>
+              <option value="devis">Demande de devis</option>
+              <option value="question">Question générale</option>
+              <option value="collaboration">Opportunité de collaboration</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Votre message ici..." rows="5" required></textarea>
+          </div>
+          
+          <div class="form-status">
+            <div class="loader" style="display: none;"></div>
+            <div class="status-message"></div>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">Envoyer</span>
+              <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="contact-shape shape-1"></div>
+  <div class="contact-shape shape-2"></div>
 </section>
