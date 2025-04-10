@@ -4,13 +4,28 @@
     overflow: hidden;
     background: white;
   }
-  
+
   .skills-title {
-    color: #d1a6c6;
-    text-align: center;
-    margin-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1em;
+    position: relative;
+    display: inline-block;
   }
-  
+
+  .skills-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #d1a6c6, #9c7aa5);
+    border-radius: 2px;
+  }
+
   .skills-logos {
     position: relative;
     width: 100%;
