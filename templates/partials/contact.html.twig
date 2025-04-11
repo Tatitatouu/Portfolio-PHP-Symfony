@@ -53,7 +53,7 @@
           </div>
         {% endif %}
         
-        <form id="contact-form" class="contact-form" data-url="{{ path('contact_submit') }}" method="POST" novalidate>
+        <form id="contact-form" class="contact-form" action="{{ path('contact_submit') }}" method="POST" novalidate>
           <div class="form-group">
             <label for="name">Nom et prénom</label>
             <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
@@ -99,3 +99,10 @@
   <div class="contact-shape shape-1"></div>
   <div class="contact-shape shape-2"></div>
 </section>
+
+<!-- Ajoutez cette balise script avant votre fichier JS pour définir l'URL -->
+<script>
+  window.contactSubmitUrl = "{{ path('contact_submit') }}";
+</script>
+<!-- Ensuite incluez votre fichier JS -->
+<script src="{{ asset('js/contact.js') }}"></script>
