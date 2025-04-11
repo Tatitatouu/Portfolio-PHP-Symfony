@@ -18,14 +18,16 @@ class ContactController extends AbstractController
         $name = $request->request->get('name');
         $email = $request->request->get('email');
         $message = $request->request->get('message');
+        $subject = $request->request->get('subject');
 
         // Créer l'email
         $emailMessage = (new Email())
-            ->from('ton.email@example.com')
-            ->to('destinataire@example.com')
-            ->subject('Nouveau message de contact')
-            ->text("Nom: $name\nEmail: $email\nMessage: $message");
-
+            ->from('no-reply@votre-domaine.com') // Adresse fixe pour l'expéditeur
+            ->to('tatiana68270wi@gmail.com')
+            ->subject('Nouveau message de contact: ' . ($subject ?? 'Sans sujet'))
+            ->text("Nom: $name\nEmail: $email\nSujet: $subject\nMessage: $message")
+            ->replyTo($email); // Utiliser l'email de l'utilisateur comme adresse de réponse
+            
         // Envoi de l'email
         $mailer->send($emailMessage);
 
