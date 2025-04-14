@@ -61,7 +61,6 @@
   
   .contact-info {
     flex: 1;
-    min-width: 300px;
     background: rgba(40, 42, 54, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 16px;
@@ -141,7 +140,6 @@
   
   .form-container {
     flex: 1.5;
-    min-width: 350px;
     background: rgba(40, 42, 54, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 16px;
@@ -367,7 +365,7 @@
     }
     
     .contact-subtitle {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     
     .contact-info,

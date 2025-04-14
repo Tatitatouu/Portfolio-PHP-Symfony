@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let index = 0;
     let charIndex = 0;
     let typingSpeed = 80;
-    let backSpeed = 30;
+    let backSpeed = 40;
     let isDeleting = false;
     const typedText = document.getElementById("typed-text");
 
