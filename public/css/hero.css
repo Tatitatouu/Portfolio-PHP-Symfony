@@ -4,23 +4,38 @@
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    height: 80vh;
+    height: 90vh;
     text-align: center;
 }
 
 .hero h2 {
     font-weight: 500;
-    font-size: 2rem;
-    padding-top: 10em;
+    font-size: 1.9rem;
+    padding-top: 8.5em;
     color: #333;
     margin: 0;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #666;
+    padding: 1.5em;
 }
 
 .hero strong {
     color: #d1a6c6;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 85vh;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .hero h2 {
+        font-size: 1.9rem;
+    }
 }

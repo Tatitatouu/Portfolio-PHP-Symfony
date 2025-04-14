@@ -202,7 +202,6 @@
     box-shadow: 0 6px 15px rgba(209, 166, 198, 0.5);
   }
   
-  /* Animation d'apparition */
   @keyframes fadeInUp {
     from {
       opacity: 0;
