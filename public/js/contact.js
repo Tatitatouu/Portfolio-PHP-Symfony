@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loader.style.display = 'none';
 
         if (data.success) {
-          statusMessage.textContent = 'Merci ! Je reviendrai vers toi rapidement. 😊';
+          statusMessage.textContent = 'Merci ! Je reviendrai vers vous rapidement. 😊';
           contactForm.reset();
 
           setTimeout(() => {
