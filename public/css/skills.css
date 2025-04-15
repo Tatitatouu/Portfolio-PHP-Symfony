@@ -1,111 +1,114 @@
 .skills-header {
-  text-align: center;
-  position: relative;
-  z-index: 10;
-  padding-top: 2em;
-  padding-bottom: 1em;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    padding-top: 2em;
+    padding-bottom: 1em;
 }
 
 .skills-bouncing {
-  position: relative;
-  height: 80vh; 
-  overflow: hidden;
-  background: white;
+    position: relative;
+    height: 80vh; 
+    overflow: hidden;
+    background: white;
 }
 
 .skills-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin: 0 auto;
-  display: inline-block;
-  position: relative;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
 }
 
 .skills-title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #d1a6c6, #9c7aa5);
-  border-radius: 2px;
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #d1a6c6, #9c7aa5);
+    border-radius: 2px;
 }
 
 .skills-logos {
-  position: relative;
-  width: 100%;
-  height: calc(100% - 100px); 
+    position: relative;
+    width: 100%;
+    height: calc(100% - 100px); 
+    transform: none !important;
 }
 
 .logo-floating {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  pointer-events: none;
-  filter: brightness(0) saturate(100%) invert(93%) sepia(3%) saturate(5392%) hue-rotate(213deg) brightness(80%) contrast(105%);
-  transition: width 0.3s ease, height 0.3s ease;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    pointer-events: none;
+    transition: width 0.3s ease, height 0.3s ease, filter 0.3s ease, transform 0.2s ease;
+    pointer-events: auto;
+    z-index: 10;
 }
 
+/* Responsive */
 @media (max-width: 1200px) {
-  .skills-bouncing {
-    height: 80vh;
-  }
-  
-  .logo-floating {
-    width: 55px;
-    height: 55px;
-  }
+    .skills-bouncing {
+        height: 80vh;
+    }
+    
+    .logo-floating {
+        width: 55px;
+        height: 55px;
+    }
 }
 
 @media (max-width: 992px) {
-  .skills-title {
-    font-size: 2.25rem;
-  }
-  
-  .logo-floating {
-    width: 50px;
-    height: 50px;
-  }
+    .skills-title {
+        font-size: 2.25rem;
+    }
+    
+    .logo-floating {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 @media (max-width: 768px) {
-  .skills-title {
-    font-size: 2rem;
-  }
-  
-  .skills-title::after {
-    width: 50px;
-    bottom: -10px;
-  }
+    .skills-title {
+        font-size: 2rem;
+    }
+    
+    .skills-title::after {
+        width: 50px;
+        bottom: -10px;
+    }
 
-  .logo-floating {
-    width: 45px;
-    height: 45px;
-  }
+    .logo-floating {
+        width: 45px;
+        height: 45px;
+    }
 }
 
 @media (max-width: 576px) {
-  .skills-header {
-    padding-top: 1.5em;
-  }
-  
-  .skills-title {
-    font-size: 1.75rem;
-  }
-  
-  .logo-floating {
-    width: 40px;
-    height: 40px;
-  }
+    .skills-header {
+        padding-top: 1.5em;
+    }
+    
+    .skills-title {
+        font-size: 1.75rem;
+    }
+    
+    .logo-floating {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 @media (max-width: 400px) {
-  .logo-floating {
-    width: 35px;
-    height: 35px;
-  }
+    .logo-floating {
+        width: 35px;
+        height: 35px;
+    }
 }

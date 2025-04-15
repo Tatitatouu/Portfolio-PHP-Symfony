@@ -1,16 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM chargé, initialisation du script...");
-    
+document.addEventListener("DOMContentLoaded", function() {    
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
     const menuIcon = document.getElementById("menu-icon");
     const header = document.querySelector(".header");
-    
-    console.log("Éléments trouvés:", { 
-        menuToggle: !!menuToggle, 
-        navMenu: !!navMenu, 
-        menuIcon: !!menuIcon 
-    });
 
     // Toggle menu sur mobile
     if (menuToggle) {
@@ -56,5 +48,28 @@ document.addEventListener("DOMContentLoaded", function() {
             menuIcon.classList.remove("fa-times");
             menuIcon.classList.add("fa-bars");
         }
+    });
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150; // Décalage pour coller un peu avant la section
+            const sectionHeight = section.offsetHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
     });
 });

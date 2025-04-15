@@ -81,6 +81,14 @@
   width: 100%;
 }
 
+.nav a.active {
+  color: var(--primary-color);
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+
 .header.scrolled {
   padding: 10px 5%;
   box-shadow: var(--shadow);
