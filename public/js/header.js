@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM chargé, initialisation du script...");
-    
+document.addEventListener("DOMContentLoaded", function() {    
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
     const menuIcon = document.getElementById("menu-icon");
@@ -15,18 +13,15 @@ document.addEventListener("DOMContentLoaded", function() {
     // Toggle menu sur mobile
     if (menuToggle) {
         menuToggle.addEventListener("click", function() {
-            console.log("Menu toggle cliqué");
             navMenu.classList.toggle("show");
             
             // Change l'icône selon l'état du menu
             if (navMenu.classList.contains("show")) {
                 menuIcon.classList.remove("fa-bars");
                 menuIcon.classList.add("fa-times");
-                console.log("Menu ouvert");
             } else {
                 menuIcon.classList.remove("fa-times");
                 menuIcon.classList.add("fa-bars");
-                console.log("Menu fermé");
             }
         });
     }
