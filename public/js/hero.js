@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const texts = [
         "une Alternance dans le Développement Web",
         "un maximum d'opportunités pour évoluer",
-        "une équipe avec qui évoluer",
         "un projet innovant à développer"
     ];
     let index = 0;
