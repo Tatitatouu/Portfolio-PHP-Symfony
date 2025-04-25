@@ -50,6 +50,7 @@
 .nav {
   display: flex;
   gap: 30px;
+  align-items: center;
 }
 
 .nav a {
@@ -89,6 +90,22 @@
 .header.scrolled .logo-image {
   width: 60px;
 }
+
+.login-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.login-icon img {
+  width: 28px;
+  height: auto;
+  filter: brightness(0) saturate(100%)
+}
+
+.login-icon:hover {
+  transform: scale(1.1);
+}
+
 
 @media (max-width: 768px) {
   .menu-icon {
