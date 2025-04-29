@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mon-symfony
+    env: php
+    plan: free
+    buildCommand: "./.render-build.sh"
+    startCommand: php -S 0.0.0.0:10000 -t public
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: APP_DEBUG
+        value: "0"

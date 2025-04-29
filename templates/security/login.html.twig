@@ -14,6 +14,8 @@
                     <div class="alert alert-danger">{{ flash_error }}</div>
                 {% endfor %}
             {% endif %}
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             
             <div class="form-group">
                 <div class="input-group">
