@@ -13,6 +13,8 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+MAILER_DSN=gmail://tatiana68270wi@gmail.com:gjmpljyakrqmsazg@default
+DATABASE_URL="mysql://tatianafuhrerdev:essaipourquoipas@127.0.0.1:3306/mon_portfolio?serverVersion=10.4.32-MariaDB"
 
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
