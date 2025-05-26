@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: symfony-contact
+    env: static
+    buildCommand: |
+      apt-get update && \
+      apt-get install -y php php-cli php-mbstring php-xml php-curl php-intl php-mysql unzip git curl && \
+      curl -sS https://getcomposer.org/installer | php && \
+      php composer.phar install --no-dev --optimize-autoloader && \
+      php bin/console cache:clear --env=prod
+    startCommand: php -S 0.0.0.0:10000 -t public
+    staticPublishPath: public
+    envVars:
+      - key: APP_ENV
+        value: prod

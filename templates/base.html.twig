@@ -24,8 +24,9 @@
     <link rel="stylesheet" href="{{ asset('css/skills.css') }}">
     <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}">
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-</head>
+    <link rel="stylesheet" href="{{ asset('css/typing-test.css') }}">
+    
+    </head>
 <body>
     {% include 'partials/header.html.twig' %}
 
@@ -38,6 +39,7 @@
         {% include 'partials/about.html.twig' %}
         {% include 'partials/portfolio.html.twig' %}
         {% include 'partials/contact.html.twig' %}
+        {% include 'partials/typing_test.html.twig' %}
 
         {% endblock %}
     </main>
@@ -48,6 +50,6 @@
     <script src="{{ asset('js/skills.js') }}" defer></script>
     <script src="{{ asset('js/portfolio.js') }}" defer></script>
     <script src="{{ asset('js/contact.js') }}" defer></script>
-    <script src="{{ asset('js/modal.js') }}" defer></script>
+    <script src="{{ asset('js/typing-test.js') }}" defer></script>
 </body>
 </html>
