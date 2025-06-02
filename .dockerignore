@@ -1,5 +1,35 @@
+# Git
 .git
-vendor
-node_modules
-.env
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Tests
+tests/
+phpunit.xml.dist
+
+# Dev dependencies
+/vendor/
+/node_modules/
+
+# Cache et logs
+/var/cache/
+/var/log/
+/var/sessions/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environnement local
 .env.local
+.env.local.php
+.env.*.local
