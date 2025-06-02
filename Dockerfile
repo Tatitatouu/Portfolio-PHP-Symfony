@@ -83,12 +83,13 @@ COPY . .
 # Finaliser l'installation Composer
 RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 
+# Créer les variables d'environnement nécessaires
+ENV APP_ENV=prod
+ENV APP_DEBUG=0
+
 # Vider le cache et réchauffer
 RUN php bin/console cache:clear --env=prod --no-debug
 RUN php bin/console cache:warmup --env=prod --no-debug
-
-# Installer les assets (pour Asset Mapper de Symfony 7.2)
-RUN php bin/console asset-map:compile --env=prod
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html/var
