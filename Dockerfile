@@ -1,12 +1,13 @@
 FROM php:8.3-apache
 
-# Installer les extensions PHP nécessaires pour Symfony 7.2
+# Installer les extensions PHP nécessaires pour Symfony
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
     libicu-dev \
     libonig-dev \
+    curl \
     && docker-php-ext-configure intl \
     && docker-php-ext-install -j$(nproc) \
         zip \
@@ -34,17 +35,17 @@ COPY <<EOF /etc/apache2/sites-available/000-default.conf
 <VirtualHost *:80>
     ServerName localhost
     DocumentRoot /var/www/html/public
-    
+
     <Directory /var/www/html/public>
-        AllowOverride None
+        Options Indexes FollowSymLinks
+        AllowOverride All
         Require all granted
-        
-        # Réécriture d'URL pour Symfony
+
         DirectoryIndex index.php
         <IfModule mod_negotiation.c>
             Options -MultiViews
         </IfModule>
-        
+
         <IfModule mod_rewrite.c>
             RewriteEngine On
             RewriteCond %{REQUEST_URI}::$0 ^(/.+)/(.*)::\2$
@@ -57,12 +58,10 @@ COPY <<EOF /etc/apache2/sites-available/000-default.conf
             RewriteRule ^ %{ENV:BASE}/index.php [L]
         </IfModule>
     </Directory>
-    
-    # Logs
+
     ErrorLog \${APACHE_LOG_DIR}/error.log
     CustomLog \${APACHE_LOG_DIR}/access.log combined
-    
-    # Headers de sécurité
+
     Header always set X-Content-Type-Options nosniff
     Header always set X-Frame-Options DENY
     Header always set X-XSS-Protection "1; mode=block"
@@ -72,38 +71,40 @@ EOF
 # Définir le répertoire de travail
 WORKDIR /var/www/html
 
-# Copier les fichiers de dépendances en premier (cache Docker)
+# Copier les fichiers de dépendances
 COPY composer.json composer.lock symfony.lock ./
 
 # Installer les dépendances PHP
 RUN composer install --no-dev --no-scripts --no-autoloader --optimize-autoloader
 
-# Copier le reste du code
+# Copier le reste du projet
 COPY . .
 
 # Finaliser l'installation Composer
 RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 
-# Créer les variables d'environnement nécessaires
+# Variables d'environnement
 ENV APP_ENV=prod
 ENV APP_DEBUG=0
 ENV APP_SECRET=change-me-in-railway
 
-# Vider le cache et réchauffer
+# Vider et réchauffer le cache
 RUN php bin/console cache:clear --env=prod --no-debug
 RUN php bin/console cache:warmup --env=prod --no-debug
 
-# Debug et compilation des assets
-RUN php bin/console debug:config asset_mapper || echo "Asset mapper config not found"
-RUN php bin/console importmap:install --env=prod --no-debug || echo "No importmap to install"
-RUN php bin/console asset-map:compile --env=prod --no-debug || echo "Asset compilation failed but continuing"
+# Compilation des assets (sans masquer les erreurs)
+RUN php bin/console importmap:install --env=prod --no-debug
+RUN php bin/console asset-map:compile --env=prod --no-debug
+
+# Vérification que les fichiers sont bien générés
+RUN ls -la /var/www/html/public/assets || echo "Dossier assets manquant"
 
 # Permissions
-RUN chown -R www-data:www-data /var/www/html/var
-RUN chmod -R 775 /var/www/html/var
+RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public/assets
+RUN chmod -R 775 /var/www/html/var /var/www/html/public/assets
 
 # Exposer le port
 EXPOSE 80
 
-# Commande par défaut
+# Commande de démarrage
 CMD ["apache2-foreground"]
