@@ -29,6 +29,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Configurer Apache
 RUN a2enmod rewrite headers
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 COPY <<EOF /etc/apache2/sites-available/000-default.conf
 <VirtualHost *:80>
     ServerName localhost
@@ -86,10 +87,16 @@ RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 # Créer les variables d'environnement nécessaires
 ENV APP_ENV=prod
 ENV APP_DEBUG=0
+ENV APP_SECRET=change-me-in-railway
 
 # Vider le cache et réchauffer
 RUN php bin/console cache:clear --env=prod --no-debug
 RUN php bin/console cache:warmup --env=prod --no-debug
+
+# Debug et compilation des assets
+RUN php bin/console debug:config asset_mapper || echo "Asset mapper config not found"
+RUN php bin/console importmap:install --env=prod --no-debug || echo "No importmap to install"
+RUN php bin/console asset-map:compile --env=prod --no-debug || echo "Asset compilation failed but continuing"
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html/var
