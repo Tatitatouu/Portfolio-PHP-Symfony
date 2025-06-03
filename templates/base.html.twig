@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Portfolio professionnel réalisé avec Symfony" />
     
-    <link rel="icon" href="{{ absolute_url(asset('assets/logo-static-black.png')) }}" />
-    <link rel="apple-touch-icon" href="{{ absolute_url(asset('assets/logo-static-black.png')) }}" />
-    <link rel="manifest" href="{{ absolute_url(asset('manifest.json')) }}" />
+    <link rel="icon" href="{{ asset('assets/logo-static-black.png') }}" />
+    <link rel="apple-touch-icon" href="{{ asset('assets/logo-static-black.png') }}" />
+    <link rel="manifest" href="{{ asset('manifest.json') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
@@ -17,13 +17,14 @@
     
     <title>Tatiana FUHRER - Développeuse Web</title>
 
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/hero.css')) }}">
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/header.css')) }}">
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/about.css')) }}">
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/skills.css')) }}">
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/portfolio.css')) }}">
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/contact.css')) }}">
-
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hero.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/skills.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/typing-test.css') }}">
     
     </head>
 <body>
@@ -43,12 +44,12 @@
         {% endblock %}
     </main>
 
-    <script src="{{ absolute_url(asset('js/hero.js')) }}" defer></script>
-    <script src="{{ absolute_url(asset('js/header.js')) }}" defer></script>
-    <script src="{{ absolute_url(asset('js/about.js')) }}" defer></script>
-    <script src="{{ absolute_url(asset('js/skills.js')) }}" defer></script>
-    <script src="{{ absolute_url(asset('js/portfolio.js')) }}" defer></script>
-    <script src="{{ absolute_url(asset('js/contact.js')) }}" defer></script>
-    <script src="{{ absolute_url(asset('js/typing-test.js')) }}" defer></script>
+    <script src="{{ asset('js/hero.js') }}" defer></script>
+    <script src="{{ asset('js/header.js') }}" defer></script>
+    <script src="{{ asset('js/about.js') }}" defer></script>
+    <script src="{{ asset('js/skills.js') }}" defer></script>
+    <script src="{{ asset('js/portfolio.js') }}" defer></script>
+    <script src="{{ asset('js/contact.js') }}" defer></script>
+    <script src="{{ asset('js/typing-test.js') }}" defer></script>
 </body>
 </html>
