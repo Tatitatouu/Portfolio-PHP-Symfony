@@ -1,5 +1,5 @@
 .hero {
-    background: url('../assets/images/fond-blanc.jpg');
+    background: url('images/fond-blanc.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
