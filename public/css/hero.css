@@ -27,8 +27,8 @@
 
 @media (max-width: 768px) {
     .hero {
-        min-height: 85vh;
-        background-attachment: scroll; 
+        min-height: 60vh;
+        background-attachment: scroll !important; 
    }
 
     .hero p {
