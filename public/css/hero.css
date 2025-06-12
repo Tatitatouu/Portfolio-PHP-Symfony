@@ -3,7 +3,7 @@
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    height: 90vh;
+    min-height: 90vh;
     text-align: center;
 }
 
@@ -27,8 +27,9 @@
 
 @media (max-width: 768px) {
     .hero {
-        height: 85vh;
-    }
+        min-height: 85vh;
+        background-attachment: scroll; 
+   }
 
     .hero p {
         font-size: 1.1rem;
